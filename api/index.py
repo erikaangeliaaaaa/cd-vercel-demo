@@ -4,7 +4,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "<h1>Hello from Python on Vercel 🚀</h1>"
+    return "Hello from Python on Vercel 🚀"
 
-def handler(request):
-    return app(request.environ, lambda *args: None)
+# Vercel serverless handler
+def handler(request, response):
+    return app(request.environ, response.start_response)
