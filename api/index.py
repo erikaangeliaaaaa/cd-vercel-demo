@@ -1,11 +1,6 @@
-from flask import Flask
-
-app = Flask(__name__)
-
-@app.route("/")
-def home():
-    return "Hello from Python on Vercel 🚀"
-
-# Vercel serverless handler
-def handler(request, response):
-    return app(request.environ, response.start_response)
+def handler(request):
+    return {
+        "statusCode": 200,
+        "headers": {"Content-Type": "text/html"},
+        "body": "<h1>Hello from Python on Vercel 🚀</h1>"
+    }
